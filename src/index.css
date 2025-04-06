@@ -1,0 +1,400 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 98%;
+    --foreground: 220 20% 16%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 16%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 16%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 213 27% 94%;
+    --secondary-foreground: 220 20% 16%;
+
+    --muted: 213 27% 94%;
+    --muted-foreground: 220 10% 40%;
+
+    --accent: 221 83% 53%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 214 32% 91%;
+
+    --card: 222 47% 14%;
+    --card-foreground: 214 32% 91%;
+
+    --popover: 222 47% 14%;
+    --popover-foreground: 214 32% 91%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 214 32% 91%;
+
+    --secondary: 217 33% 18%;
+    --secondary-foreground: 214 32% 91%;
+
+    --muted: 217 33% 18%;
+    --muted-foreground: 214 20% 65%;
+
+    --accent: 221 83% 53%;
+    --accent-foreground: 214 32% 91%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 214 32% 91%;
+
+    --border: 217 33% 22%;
+    --input: 217 33% 22%;
+    --ring: 221 83% 53%;
+  }
+  
+  /* Lo-fi Mode - Purple-ish hues */
+  .mood-lofi {
+    --background: 260 15% 95%;
+    --foreground: 260 30% 20%;
+    
+    --card: 260 20% 98%;
+    --card-foreground: 260 30% 20%;
+    
+    --popover: 260 20% 98%;
+    --popover-foreground: 260 30% 20%;
+    
+    --primary: 260 70% 60%;
+    --primary-foreground: 260 5% 98%;
+    
+    --secondary: 260 15% 90%;
+    --secondary-foreground: 260 30% 20%;
+    
+    --muted: 260 15% 90%;
+    --muted-foreground: 260 15% 40%;
+    
+    --accent: 260 70% 60%;
+    --accent-foreground: 260 5% 98%;
+    
+    --border: 260 15% 85%;
+    --input: 260 15% 85%;
+    --ring: 260 70% 60%;
+    
+    font-family: 'Inter', sans-serif;
+  }
+  
+  /* Café Mode - Warm browns and serif font */
+  .mood-cafe {
+    --background: 30 25% 95%;
+    --foreground: 30 40% 15%;
+    
+    --card: 30 25% 98%;
+    --card-foreground: 30 40% 15%;
+    
+    --popover: 30 25% 98%;
+    --popover-foreground: 30 40% 15%;
+    
+    --primary: 25 70% 45%;
+    --primary-foreground: 30 5% 98%;
+    
+    --secondary: 30 15% 90%;
+    --secondary-foreground: 30 40% 15%;
+    
+    --muted: 30 15% 90%;
+    --muted-foreground: 30 15% 40%;
+    
+    --accent: 25 70% 45%;
+    --accent-foreground: 30 5% 98%;
+    
+    --border: 30 15% 85%;
+    --input: 30 15% 85%;
+    --ring: 25 70% 45%;
+    
+    font-family: 'Playfair Display', serif;
+  }
+  
+  /* Hacker Mode - Dark with neon green */
+  .mood-hacker {
+    --background: 180 10% 8%;
+    --foreground: 130 100% 83%;
+    
+    --card: 180 10% 12%;
+    --card-foreground: 130 100% 83%;
+    
+    --popover: 180 10% 12%;
+    --popover-foreground: 130 100% 83%;
+    
+    --primary: 135 100% 50%;
+    --primary-foreground: 180 10% 10%;
+    
+    --secondary: 180 10% 16%;
+    --secondary-foreground: 130 100% 83%;
+    
+    --muted: 180 10% 16%;
+    --muted-foreground: 130 50% 50%;
+    
+    --accent: 135 100% 50%;
+    --accent-foreground: 180 10% 10%;
+    
+    --border: 180 10% 20%;
+    --input: 180 10% 20%;
+    --ring: 135 100% 50%;
+    
+    font-family: 'Space Mono', monospace;
+  }
+  
+  /* Light Dev Day - Default light theme with blue/white */
+  .mood-light-dev {
+    /* Uses the default light theme values */
+    font-family: 'Inter', sans-serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+  
+  /* Theme transition effect */
+  body.mood-theme-transition {
+    transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+  }
+  
+  body.mood-theme-transition * {
+    transition: background-color 0.6s ease, color 0.6s ease, border-color 0.6s ease;
+  }
+  
+  /* Flash effect for theme toggle */
+  .mood-theme-flash {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    opacity: 0;
+    z-index: 9999;
+    pointer-events: none;
+    animation: theme-flash 0.6s ease-out;
+  }
+  
+  @keyframes theme-flash {
+    0% { opacity: 0; }
+    20% { opacity: 0.3; }
+    100% { opacity: 0; }
+  }
+  
+  /* Mexican-inspired accent colors */
+  .mexican-accent-red {
+    @apply text-red-600 dark:text-red-500;
+  }
+  
+  .mexican-accent-green {
+    @apply text-green-600 dark:text-green-500;
+  }
+  
+  /* Parallax scrolling */
+  .parallax {
+    transform: translateY(var(--parallax-y, 0));
+    transition: transform 0.1s ease-out;
+  }
+}
+
+@layer components {
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24;
+  }
+  
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-500 bg-clip-text text-transparent;
+  }
+  
+  .skill-tag {
+    @apply px-3 py-1 rounded-full text-sm font-medium bg-secondary text-secondary-foreground transition-colors hover:bg-secondary/80 hover:scale-105 transform duration-200;
+  }
+  
+  .social-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded-full bg-secondary text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 hover:rotate-6;
+  }
+  
+  .nav-link {
+    @apply relative px-3 py-2 text-sm font-medium transition-colors hover:text-foreground/80;
+  }
+  
+  .nav-link.active::after {
+    content: '';
+    @apply absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-full;
+  }
+  
+  /* Enhanced card styling */
+  .card-with-hover {
+    @apply relative overflow-hidden transition-all duration-500 hover:shadow-xl;
+  }
+  
+  .card-with-hover::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/5 to-primary/0 opacity-0 transition-opacity duration-500;
+  }
+  
+  .card-with-hover:hover::before {
+    @apply opacity-100;
+  }
+  
+  /* Command terminal styling */
+  .terminal-text {
+    @apply font-mono text-sm;
+  }
+
+  /* Tech stack heatmap styles */
+  .tech-item {
+    @apply transition-all duration-300 hover:scale-105 cursor-pointer;
+  }
+  
+  /* Achievement badge styles */
+  .achievement-badge {
+    @apply rounded-lg overflow-hidden relative transition-all duration-300 hover:transform hover:scale-105 cursor-pointer;
+  }
+}
+
+/* Animation classes */
+@layer utilities {
+  /* Fade animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  
+  .animate-fade-up {
+    animation: fadeUp 0.5s ease forwards;
+  }
+  
+  /* Staggered animations for children */
+  .stagger-children > * {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.5s ease forwards;
+  }
+  
+  .stagger-children > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-children > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-children > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-children > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-children > *:nth-child(5) { animation-delay: 0.5s; }
+  
+  /* Hover animations */
+  .hover-lift {
+    @apply transition-transform duration-300 hover:-translate-y-1;
+  }
+  
+  .hover-grow {
+    @apply transition-transform duration-300 hover:scale-105;
+  }
+  
+  .hover-glow {
+    @apply transition-shadow duration-300 hover:shadow-lg;
+  }
+  
+  .hover-accent {
+    @apply transition-colors duration-300 hover:border-primary;
+  }
+  
+  /* Parallax scroll effect utilities */
+  .parallax-slow {
+    transform: translateY(calc(var(--scroll-y) * 0.1px));
+  }
+  
+  .parallax-medium {
+    transform: translateY(calc(var(--scroll-y) * 0.05px));
+  }
+  
+  .parallax-fast {
+    transform: translateY(calc(var(--scroll-y) * -0.05px));
+  }
+  
+  /* Theme-specific animations */
+  .mood-lofi .animate-pulse {
+    animation-duration: 3s;
+  }
+  
+  .mood-hacker .tech-item {
+    box-shadow: 0 0 8px var(--primary);
+  }
+  
+  .mood-cafe .card {
+    border-width: 2px;
+  }
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from { 
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Mexican-inspired color accents */
+.mexican-green {
+  color: #006847;
+}
+
+.mexican-red {
+  color: #ce1126;
+}
+
+.mexican-accent {
+  background: linear-gradient(90deg, #006847, #ce1126);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
