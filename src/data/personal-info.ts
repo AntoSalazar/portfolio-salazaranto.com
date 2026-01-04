@@ -8,7 +8,7 @@ export const personalInfo: PersonalInfo = {
   phone: '+52 961 269 5899',
   website: 'https://salazaranto.com',
   github: 'https://github.com/AntoSalazar',
-  linkedin: 'https://www.linkedin.com/in/carlos-antonio-salazar-trinidad',
+  linkedin: 'https://www.linkedin.com/in/carlos-antonio-salazar-trinidad-3421b8358',
   bio: `Systems Engineer specialized in building scalable full-stack applications, AI-powered automation solutions, and enterprise SaaS platforms. Experienced in Clean Architecture, microservices, and modern web technologies.`
 };
 

@@ -34,7 +34,10 @@ export default function HeroSection() {
                 </a>
               </Button>
               <Button asChild variant="secondary" size="lg" className="gap-2">
-                <a href="/cv.pdf" download="Carlos_Salazar_CV.pdf">
+                <a
+                  href="/SalazarTrinidadCarlosAntonioCV.pdf"
+                  download="SalazarTrinidadCarlosAntonioCV.pdf"
+                >
                   Download CV <FileDown className="w-4 h-4" />
                 </a>
               </Button>
