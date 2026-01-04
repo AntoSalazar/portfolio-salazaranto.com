@@ -2,9 +2,10 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Linkedin, Mail, MapPin, MessageSquare } from "lucide-react";
+import { Linkedin, Mail, MapPin, MessageSquare, Github, Phone } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { personalInfo } from "@/data";
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -14,29 +15,29 @@ export default function ContactSection() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
-  
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
       // Create form data object for sending to PHP
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
       formDataToSend.append('email', formData.email);
       formDataToSend.append('message', formData.message);
-      
+
       // Send the form data to your PHP script
       const response = await fetch('/api/contact.php', {
         method: 'POST',
         body: formDataToSend
       });
-      
+
       if (response.ok) {
         toast({
           title: "Message sent!",
@@ -57,40 +58,31 @@ export default function ContactSection() {
       setIsSubmitting(false);
     }
   };
-  
+
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5" />,
       title: "Email",
-      content: "carlossalazartrinidad@gmail.com",
-      link: "mailto:carlossalazartrinidad@gmail.com"
+      content: personalInfo.email,
+      link: `mailto:${personalInfo.email}`
     },
     {
-      icon: (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="20"
-          height="20"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="w-5 h-5"
-        >
-          <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-        </svg>
-      ),
+      icon: <Phone className="w-5 h-5" />,
+      title: "Phone",
+      content: personalInfo.phone,
+      link: `tel:${personalInfo.phone}`
+    },
+    {
+      icon: <Github className="w-5 h-5" />,
       title: "GitHub",
       content: "github.com/AntoSalazar",
-      link: "https://github.com/AntoSalazar"
+      link: personalInfo.github
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
       title: "LinkedIn",
-      content: "linkedin.com/in/Carlos-Antonio",
-      link: "https://www.linkedin.com/in/carlos-antonio-salazar-trinidad-3421b8358/"
+      content: "Carlos Antonio Salazar Trinidad",
+      link: personalInfo.linkedin
     }
   ];
   
@@ -137,7 +129,7 @@ export default function ContactSection() {
                 </div>
                 <div>
                   <h4 className="font-medium">Location</h4>
-                  <p className="text-muted-foreground">Mexico</p>
+                  <p className="text-muted-foreground">{personalInfo.location}</p>
                   <p className="text-muted-foreground mt-4">
                     I'm open to remote opportunities and collaborations worldwide.
                   </p>

@@ -1,6 +1,6 @@
-
-import { ArrowDown, Code, Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { ArrowDown, Code, Github, Linkedin, Mail, FileDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { personalInfo } from "@/data";
 
 export default function HeroSection() {
   return (
@@ -11,18 +11,17 @@ export default function HeroSection() {
             <div className="space-y-2">
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
                 <span className="block">👋 Hi there! I'm</span>
-                <span className="text-gradient">Anto Salazar</span>
+                <span className="text-gradient">Carlos Antonio</span>
               </h1>
               <h2 className="text-xl sm:text-2xl font-medium text-muted-foreground">
-                Software Engineer | Backend Developer
+                {personalInfo.title}
               </h2>
             </div>
-            
+
             <p className="text-lg text-muted-foreground max-w-xl">
-              Passionate about building web apps, mobile apps, and backend systems.
-              Currently focused on scalable architecture and cloud solutions.
+              {personalInfo.bio}
             </p>
-            
+
             <div className="flex flex-wrap gap-3 pt-2">
               <Button asChild size="lg" className="gap-2">
                 <a href="#contact">
@@ -34,41 +33,48 @@ export default function HeroSection() {
                   View Projects <Code className="w-4 h-4" />
                 </a>
               </Button>
+              <Button asChild variant="secondary" size="lg" className="gap-2">
+                <a href="/cv.pdf" download="Carlos_Salazar_CV.pdf">
+                  Download CV <FileDown className="w-4 h-4" />
+                </a>
+              </Button>
             </div>
-            
+
             <div className="flex gap-3 pt-4">
-              <a href="https://github.com/AntoSalazar" target="_blank" rel="noreferrer" className="social-icon">
+              <a href={personalInfo.github} target="_blank" rel="noreferrer" className="social-icon">
                 <Github className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/in/carlos-antonio-salazar-trinidad-3421b8358/" target="_blank" rel="noreferrer" className="social-icon">
+              <a href={personalInfo.linkedin} target="_blank" rel="noreferrer" className="social-icon">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="mailto:carlossalazartrinidad@gmail.com" className="social-icon">
+              <a href={`mailto:${personalInfo.email}`} className="social-icon">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
           </div>
-          
+
           <div className="relative hidden lg:flex justify-center items-center">
             <div className="absolute w-72 h-72 bg-primary/20 rounded-full filter blur-3xl animate-pulse"></div>
             <div className="relative bg-card border rounded-lg p-8 shadow-lg animate-fade-in z-10">
               <pre className="font-mono text-sm overflow-x-auto">
                 <code>
 {`// about-me.ts
-const anto = {
-  name: "Anto Salazar",
-  title: "Software Engineer",
-  location: "Mexico",
+const carlos = {
+  name: "${personalInfo.name}",
+  title: "${personalInfo.title}",
+  location: "${personalInfo.location}",
   specialties: [
-    "Backend Development",
-    "Web Applications",
-    "Mobile Apps"
+    "Full-Stack Development",
+    "AI & Automation",
+    "Clean Architecture",
+    "Microservices"
   ],
-  hobbies: ["Coding", "Music"],
-  currentlyLearning: [
-    "Kubernetes",
-    "Microservices",
-    "Event Sourcing"
+  education: "Computer Systems Engineering",
+  languages: ["Spanish", "English"],
+  currentFocus: [
+    "AI-Powered SaaS",
+    "RAG Systems",
+    "Enterprise Solutions"
   ]
 };`}
                 </code>
@@ -76,7 +82,7 @@ const anto = {
             </div>
           </div>
         </div>
-        
+
         <div className="absolute bottom-12 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block">
           <Button variant="ghost" size="icon" asChild>
             <a href="#about" aria-label="Scroll down">

@@ -1,5 +1,5 @@
-
-import { Github, Linkedin, Mail, Twitter } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
+import { personalInfo } from "@/data";
 
 export default function Footer() {
   return (
@@ -7,12 +7,12 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Anto Salazar</h3>
+            <h3 className="text-lg font-semibold">{personalInfo.name}</h3>
             <p className="text-muted-foreground">
-              Software Engineer & Backend Developer passionate about building innovative solutions.
+              {personalInfo.title} passionate about building scalable applications and AI-powered solutions.
             </p>
           </div>
-          
+
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Quick Links</h3>
             <nav className="flex flex-col space-y-2">
@@ -33,42 +33,33 @@ export default function Footer() {
               </a>
             </nav>
           </div>
-          
+
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Let's build something amazing together</h3>
+            <h3 className="text-lg font-semibold">Connect With Me</h3>
             <p className="text-muted-foreground">
               Interested in working together or have a question?
             </p>
             <div className="flex space-x-4">
-              <a 
-                href="https://github.com" 
-                target="_blank" 
+              <a
+                href={personalInfo.github}
+                target="_blank"
                 rel="noreferrer"
                 className="social-icon"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
               </a>
-              <a 
-                href="https://linkedin.com" 
-                target="_blank" 
+              <a
+                href={personalInfo.linkedin}
+                target="_blank"
                 rel="noreferrer"
                 className="social-icon"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a 
-                href="https://twitter.com" 
-                target="_blank" 
-                rel="noreferrer"
-                className="social-icon"
-                aria-label="Twitter"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-              <a 
-                href="mailto:your-email@example.com"
+              <a
+                href={`mailto:${personalInfo.email}`}
                 className="social-icon"
                 aria-label="Email"
               >
@@ -77,10 +68,10 @@ export default function Footer() {
             </div>
           </div>
         </div>
-        
+
         <div className="mt-12 pt-8 border-t text-center text-muted-foreground text-sm">
-          <p>© {new Date().getFullYear()} Anto Salazar. All rights reserved.</p>
-          <p className="mt-2">Built with React, TypeScript, and Tailwind CSS</p>
+          <p>© {new Date().getFullYear()} {personalInfo.name}. All rights reserved.</p>
+          <p className="mt-2">Built with React, TypeScript, Vite, and Tailwind CSS</p>
         </div>
       </div>
     </footer>
